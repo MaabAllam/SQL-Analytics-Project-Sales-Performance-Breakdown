@@ -97,3 +97,77 @@ GROUP BY
     p.Category
 ORDER BY 
     Total_Boxes_Sold DESC;
+   -- 🧍‍♂️ People & Teams
+-- How many salespeople are on each team?
+SELECT 
+    Team,
+    COUNT(Salesperson) AS Num_Salespeople
+FROM 
+    people
+WHERE 
+    Team IS NOT NULL AND Team != ''
+GROUP BY 
+    Team
+ORDER BY 
+    Num_Salespeople DESC;
+    
+-- List salespeople who don’t belong to any team.
+
+SELECT 
+    Team, Salesperson, SPID, Location
+FROM
+    people
+WHERE
+    Team IS NULL OR Team = '';
+    
+-- Which salesperson had the most unique products sold?
+SELECT 
+    pe.Salesperson,
+    s.SPID,
+    COUNT(DISTINCT s.PID) AS Unique_Products_Sold
+FROM 
+    sales s
+JOIN 
+    people pe ON s.SPID = pe.SPID
+GROUP BY 
+    s.SPID, pe.Salesperson
+ORDER BY 
+    Unique_Products_Sold DESC;
+SELECT 
+    pe.Salesperson,
+    s.SPID,
+    COUNT(DISTINCT s.PID) AS Unique_Products_Sold
+FROM 
+    sales s
+JOIN 
+    people pe ON s.SPID = pe.SPID
+GROUP BY 
+    s.SPID, pe.Salesperson
+ORDER BY 
+    Unique_Products_Sold DESC
+    limit 1;
+ -- Which salesperson has the highest average sale per transaction?
+ SELECT 
+    pe.Salesperson,
+    s.SPID,
+    AVG(s.Amount) AS Avg_Sale_Per_Transaction
+FROM 
+    sales s
+JOIN 
+    people pe ON s.SPID = pe.SPID
+GROUP BY 
+    s.SPID, pe.Salesperson
+ORDER BY 
+    Avg_Sale_Per_Transaction DESC
+LIMIT 1;
+
+-- What's the average revenue per team?
+ SELECT 
+p.Team, AVG(s.Amount) AS 'Average_Revenue_per_Team'
+FROM
+    sales AS s
+        JOIN
+    people AS p USING (SPID)
+WHERE
+    p.Team IS NOT NULL or p.Team != ' '
+GROUP BY p.Team;
