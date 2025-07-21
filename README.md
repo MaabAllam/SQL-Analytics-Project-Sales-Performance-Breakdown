@@ -13,14 +13,19 @@ This section focuses on analyzing key revenue metrics from the chocolate sales d
 - What is the average number of boxes sold per sale?
 - Who is the top-performing salesperson based on revenue?
 - What is the total revenue per region?
+- Updated LinkedIn Post – Continued Insights (Part 2)
+🚀 More SQL Insights from My Sales Analytics Project
 
-### Techniques Used:
-- SQL Joins (`INNER JOIN`, `USING`)
-- Aggregation (`SUM`, `AVG`)
-- Filtering (`WHERE`, `IS NOT NULL`)
-- Grouping (`GROUP BY`)
-- Ranking (`RANK()` over window functions)
-- Sorting and limiting (`ORDER BY`, `LIMIT`)
+Continuing my deep dive into the Awesome Chocolates dataset, I’ve just wrapped up another batch of practical SQL queries focused on team, product, and individual performance.
 
----
+📌 Here are 5 more questions I tackled:
+
+• 🔢 How many salespeople are on each team?
+• ❌ Which salespeople don’t belong to any team?
+• 📦 Which salesperson sold the most unique products?
+• 💳 Which salesperson has the highest average sale per transaction?
+• 🧠 What’s the average revenue per team?
+
+
+
 
